@@ -38,7 +38,7 @@ const todos = [
   2. Use an anonymous function as the callback.
   3. Return only the tasks that are not completed.
   */
-  
+const notComplete = [...todos].filter(isNotCompleted => isNotCompleted.completed === false);
   /*
   🔹 Task 2: Sort Tasks by Priority
   
@@ -47,7 +47,9 @@ const todos = [
   2. Use an anonymous function as the comparison function.
   3. Sort tasks in ascending order of priority (1 = highest).
   */
-
+const ascendingPriority = [...todos].sort((priorityA, priorityB) => {
+  return priorityA.priority - priorityB.priority;
+});
   /*
   🔹 Task 3: Combine Filters
   
@@ -56,7 +58,8 @@ const todos = [
   2. Then, sort the filtered results by priority using `sort()`.
   3. Use method chaining to perform both steps together.
   */
-
+const incompleteTasks = [...todos].filter(isNotCompleted =>
+  isNotCompleted.completed === false).sort((priorityA, priorityB) => priorityA.priority - priorityB.priority);
   /*
   🔹 Task 4: Mark All Tasks as Completed
   
@@ -65,13 +68,20 @@ const todos = [
   2. Use an anonymous function to modify each object.
   3. Change the `completed` property to `true` for every task.
   */
-  
+  const changeStatus = todos.map(isComplete => {
+    return {
+      ...isComplete,
+      completed: true,
+
+    }
+  });
   // ============================================
   // 🧪 Console Test Your Work
   // ============================================
   
-  // console.log("Incomplete Tasks:", ...);
-  // console.log("Sorted by Priority:", ...);
-  // console.log("All Tasks Completed:", ...);
-  // console.log("Sorted Incomplete Tasks:", ...);
+  console.log("Incomplete Tasks:", notComplete);
+  console.log("Sorted by Priority:", ascendingPriority);
+  console.log("Sorted Incomplete Tasks:", incompleteTasks); 
+  console.log("All Tasks Completed:", changeStatus);
+ 
   
